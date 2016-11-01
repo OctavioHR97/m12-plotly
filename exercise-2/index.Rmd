@@ -1,0 +1,27 @@
+---
+title: "index"
+author: "Octavio Hermida"
+date: "November 1, 2016"
+output: html_document
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+
+Countries <- c('Mexico', 'USA', 'Italy', 'Canada', 'Russia')
+Population <- c(122.3, 318.9, 59.83, 35.16, 143.5)
+Area <- c(0.762, 3.797, 0.116, 3.855, 6.602)
+data <- data.frame(Countries, Population, Area)
+
+plot_ly(data, x = ~Area, y = ~Population, type = 'scatter',
+        mode = 'text', text = ~Countries, textposition = 'middle right',
+        textfont = list(color = '#000000', size = 13)) %>%
+  layout(title = 'Countries Population and Area',
+         xaxis = list(title = 'Area (mi^2)',
+                      zeroline = TRUE,
+                      range = c(0, 8)),
+         yaxis = list(title = 'Population (millions)',
+                      range = c(0,350)))
+
+```
+
